@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <input type="number" id="mult_${i}" required placeholder="?">
                     <span class="feedback-icon" id="icon_mult_${i}"></span>
                 </div>
+                <div class="solution-steps" id="steps_mult_${i}">
+                    <strong>Solution:</strong> ${num1} × ${num2} = ${answer}
+                </div>
             `;
             multiplicationContainer.appendChild(card);
         }
@@ -73,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <span class="feedback-icon" id="icon_div_${i}"></span>
                 </div>
+                <div class="solution-steps" id="steps_div_${i}">
+                    <strong>Solution:</strong> ${dividend} ÷ ${divisor} = ${quotient} R ${remainder} <br>
+                    <small>(Check: ${divisor} × ${quotient} + ${remainder} = ${dividend})</small>
+                </div>
             `;
             divisionContainer.appendChild(card);
         }
@@ -99,8 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.add('incorrect');
                 card.classList.remove('correct');
                 icon.textContent = '❌';
-                // Optional: Show correct answer? Maybe not for an exam, but helpful for review.
-                // Let's keep it simple for now.
+                document.getElementById(`steps_${q.id}`).classList.add('visible');
             }
         });
 
@@ -122,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.add('incorrect');
                 card.classList.remove('correct');
                 icon.textContent = '❌';
+                document.getElementById(`steps_${q.id}`).classList.add('visible');
             }
         });
 
@@ -159,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.question-card').forEach(c => {
             c.classList.remove('correct', 'incorrect');
         });
+        document.querySelectorAll('.solution-steps').forEach(s => s.classList.remove('visible'));
         document.querySelectorAll('.feedback-icon').forEach(i => i.textContent = '');
         generateQuestions();
     });
