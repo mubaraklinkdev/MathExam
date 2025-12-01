@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Master Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Math Master Exam</h1>
+            <p>Good luck! Do your best.</p>
+        </header>
+
+        <form id="exam-form">
+            <section class="question-section">
+                <h2>Multiplication</h2>
+                <div id="multiplication-container" class="questions-grid">
+                    <!-- Questions injected by JS -->
+                </div>
+            </section>
+
+            <section class="question-section">
+                <h2>Division</h2>
+                <p class="subtitle">Find the Quotient and Remainder</p>
+                <div id="division-container" class="questions-grid">
+                    <!-- Questions injected by JS -->
+                </div>
+            </section>
+
+            <div class="actions">
+                <button type="submit" class="btn-primary">Submit Answers</button>
+                <button type="button" id="refresh-btn" class="btn-secondary">New Exam</button>
+            </div>
+        </form>
+
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Exam Results</h2>
+                <div class="score-circle">
+                    <span id="score-display">0/10</span>
+                </div>
+                <p id="feedback-message"></p>
+                <button id="close-modal" class="btn-primary">Review Answers</button>
+            </div>
+        </div>
+        <div id="overlay" class="hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
