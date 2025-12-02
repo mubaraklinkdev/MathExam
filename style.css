@@ -205,12 +205,14 @@ button {
     width: 100%;
     margin-top: 1rem;
     padding: 0.75rem;
-    background-color: #e0f2fe; /* Light blue */
+    background-color: #e0f2fe;
+    /* Light blue */
     border: 1px solid #bae6fd;
     border-radius: 0.5rem;
     color: #0369a1;
     font-size: 0.95rem;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     animation: fadeIn 0.3s ease-in;
 }
 
@@ -219,8 +221,15 @@ button {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Modal */
@@ -271,8 +280,15 @@ button {
 }
 
 @keyframes popIn {
-    from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
-    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 @media (max-width: 600px) {
@@ -280,12 +296,29 @@ button {
         flex-direction: column;
         align-items: flex-start;
     }
-    
-    .input-group, .division-inputs {
+
+    .input-group,
+    .division-inputs {
         width: 100%;
     }
-    
+
     input {
         flex: 1;
     }
+}
+
+#header-score {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 1rem;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--text-light);
+    box-shadow: none;
+    transform: none !important;
 }

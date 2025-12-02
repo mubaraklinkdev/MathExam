@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedbackMessage = document.getElementById('feedback-message');
     const closeModalBtn = document.getElementById('close-modal');
 
+    const headerScore = document.getElementById('header-score');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
     let questions = {
         multiplication: [],
         division: []
@@ -132,6 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Exam Submitted';
+
+        // Show header score
+        headerScore.textContent = `Score: ${score}/${totalQuestions}`;
+        headerScore.classList.remove('hidden');
+
         showResults(score, totalQuestions);
     }
 
@@ -168,6 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.querySelectorAll('.solution-steps').forEach(s => s.classList.remove('visible'));
         document.querySelectorAll('.feedback-icon').forEach(i => i.textContent = '');
+
+        // Reset button and header score
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Answers';
+        headerScore.classList.add('hidden');
+        headerScore.textContent = '';
+
         generateQuestions();
     });
 
