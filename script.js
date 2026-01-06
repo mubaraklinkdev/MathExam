@@ -55,19 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 5; i++) {
             // Constraints:
             // Divisor < 26 (so max 25)
-            // Dividend < 10000
+            // Questions 1-3 (0,1,2): Dividend < 1000
+            // Questions 4-5 (3,4): Dividend 1000 - 10000
 
-            const divisor = getRandomInt(2, 25); 
-            
-            // Calculate max quotient to ensure dividend < 10000
-            // Dividend = divisor * quotient + remainder
-            // Max Dividend = 9999
-            // Max Quotient approx = 9999 / divisor
-            const maxQuotient = Math.floor(9900 / divisor); // Slight buffer
-            const minQuotient = 10; // Ensure it's somewhat challenging
+            const divisor = getRandomInt(2, 25);
+            let minQuotient, maxQuotient;
 
-            const quotient = getRandomInt(minQuotient, maxQuotient); 
-            const remainder = getRandomInt(0, divisor - 1); 
+            if (i < 3) {
+                // Tier 1: Dividend < 1000
+                // Max Quotient = 999 / divisor
+                maxQuotient = Math.floor(990 / divisor);
+                minQuotient = 2; // Keep it simple
+                if (maxQuotient < minQuotient) maxQuotient = minQuotient;
+            } else {
+                // Tier 2: Dividend 1000 - 10000
+                // Min Quotient = 1000 / divisor
+                // Max Quotient = 9999 / divisor
+                minQuotient = Math.ceil(1000 / divisor);
+                maxQuotient = Math.floor(9900 / divisor);
+            }
+
+            const quotient = getRandomInt(minQuotient, maxQuotient);
+            const remainder = getRandomInt(0, divisor - 1);
 
             const dividend = (divisor * quotient) + remainder;
 
