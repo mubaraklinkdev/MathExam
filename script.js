@@ -53,12 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Generate 5 Division Questions
         for (let i = 0; i < 5; i++) {
-            // Example: 2345 / 61 (4 digit / 2 digit)
-            // Constraint: Remainder max 10
+            // Constraints:
+            // Divisor < 26 (so max 25)
+            // Dividend < 10000
 
-            const divisor = getRandomInt(20, 99); // 2 digit divisor
-            const quotient = getRandomInt(20, 150); // Result size
-            const remainder = getRandomInt(0, 10); // Constraint: Remainder <= 10
+            const divisor = getRandomInt(2, 25); 
+            
+            // Calculate max quotient to ensure dividend < 10000
+            // Dividend = divisor * quotient + remainder
+            // Max Dividend = 9999
+            // Max Quotient approx = 9999 / divisor
+            const maxQuotient = Math.floor(9900 / divisor); // Slight buffer
+            const minQuotient = 10; // Ensure it's somewhat challenging
+
+            const quotient = getRandomInt(minQuotient, maxQuotient); 
+            const remainder = getRandomInt(0, divisor - 1); 
 
             const dividend = (divisor * quotient) + remainder;
 
